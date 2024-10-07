@@ -1,0 +1,76 @@
+[project]
+name = "filebase-testing-project"
+version = "0.0.1"
+description = "Default template for PDM package"
+authors = [
+    {name = "NikMatyukhin", email = "nmatryukhin@mail.ru"},
+]
+dependencies = [
+    "fastapi>=0.115.0",
+    "sqlalchemy[asyncio]>=2.0.35",
+    "alembic>=1.13.3",
+    "psycopg2-binary>=2.9.9",
+    "asyncpg>=0.29.0",
+    "pydantic-settings>=2.5.2",
+    "uvicorn>=0.31.0",
+    "result>=0.17.0",
+    "fastapi-pagination>=0.12.29",
+    "aioinject>=0.35.0",
+    "python-multipart>=0.0.12",
+    "results>=0.1.1588569394",
+    "types-aiobotocore-s3>=2.15.1",
+    "aioboto3>=13.1.1",
+]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.6.9",
+    "isort>=5.13.2",
+    "mypy>=1.11.2",
+    "typeguard>=4.3.0",
+    "pyclean>=3.0.0",
+]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+exclude = "(alembic)"
+plugins = [
+  "pydantic.mypy",
+]
+follow_imports = "silent"
+ignore_missing_imports = true
+
+[tool.ruff]
+lint.fixable = [
+  "F",
+  "E",
+  "W",
+  "I",
+  "UP",
+  "RUF",
+]
+lint.ignore = [
+  "E501", # Line Length
+  "A003",
+  "ANN101",
+  "ANN102",
+  "D", # pydocstyle
+  "INP",
+  "TCH001",
+  "TCH002",
+  "TCH003",
+  "EXE",
+  "RUF001",
+  "RUF002",
+  "RUF003",
+]
+src = ["src", "tests"]
